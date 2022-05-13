@@ -4,10 +4,9 @@ fetch(getlistURL).then((response) => {
 }).then((data) => {
 	let urls = data.urls;
 	console.log(data);
-	document.querySelectorAll('p, a, h3, h1, h2, span').forEach((element) => {
+	document.querySelectorAll('p, a, h3, h1, h2, span, b, i').forEach((element) => {
 		var number = Math.floor(Math.random() * urls.length);
-		element.innerHTML = element.innerHTML.replaceAll(/[Rr][eaéEAÉ]([IYRiyr]*)/g, "<img style='width:1rem' src='" + urls[number] + "'>");
-
+		element.innerHTML = element.innerHTML.replaceAll(/(.*)(rey|ray|reg|rai|rei|ré|rer|ree)(.*)/gi, "$1<img style='width:1rem' src='" + urls[number] + "'>$3");
 	});
 });
 
